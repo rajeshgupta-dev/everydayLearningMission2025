@@ -16,6 +16,12 @@ function maxAndMin(arr){
         }
     }
     console.log("max :",max,"Min :",min);
+
+    // Using Build-in methods
+
+    let Max = Math.max(...arr);
+    let Min = Math.min(...arr);
+    console.log(`Max : ${Max},Min : ${Min}`);
 }
 maxAndMin([1,2,3,4,5,6,7,8,-9,0,-234,12038]);
 maxAndMin([-1,-2,-34,20,-999,909]);

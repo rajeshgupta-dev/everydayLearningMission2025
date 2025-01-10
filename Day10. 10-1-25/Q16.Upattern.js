@@ -21,7 +21,7 @@ function Upattern(n) {
         console.log(temp)
     }
 }
-// Upattern(3);
+ Upattern(3);
 // *   *
 // *   *
 // * * *

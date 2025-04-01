@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>containerVisiblilty</title>
+  </head>
+  <style>
+    /* #conatiner{
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+    } */
+    #toggle-box {
+      width: 100px;
+      height: 100px;
+      background-color: aqua;
+      /* display:block; */
+      visibility: hidden;
+      opacity: 5;
+      transition: opacity 0.2s ease;
+      color: black;
+    }
+
+    #toggle-box.visible {
+      /* display: none; */
+      opacity: 1;
+      visibility: visible;
+    }
+  </style>
+  <body>
+    <div id="toggle-box"></div>
+    <button id="toggle-btn">click me</button>
+
+    <script>
+      //  let container = document.getElementById("conatiner");
+      //  let clicked = true;
+      //  let btn = document.querySelector("button").addEventListener("click",()=>{
+      //     if(clicked){
+      //         container.style.background="none";
+      //         clicked = false;
+      //     }else{
+      //         // container.style.opacity= "block";
+      //        container.style.background.visibility: "visible"
+      //         clicked = true;
+      //     }
+
+      //  })
+
+      document
+        .getElementById("toggle-btn")
+        .addEventListener("click", function () {
+          const box = document.getElementById("toggle-box");
+
+          // Check the current visibility status from localStorage
+          const currentVisibility = localStorage.getItem("visibility");
+
+          if (currentVisibility === "visible") {
+            box.classList.remove("visible");
+            localStorage.setItem("visibility", "hidden");
+          } else {
+            box.classList.add("visible");
+            localStorage.setItem("visibility", "visible");
+          }
+        });
+    </script>
+  </body>
+</html>

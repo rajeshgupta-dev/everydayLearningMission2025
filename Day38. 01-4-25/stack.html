@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>stack</title>
+  </head>
+  <body>
+    <h1>Stack</h1>
+    <script>
+      const stack = [];
+      let stackCurrentLength = stack.length;
+      //  console.log(stackCurrentLength)
+      function push(data) {
+        stack[stackCurrentLength] = data; // on the length position , data will add
+        stackCurrentLength += 1; // whene function call the length of stack will increage by 1
+      }
+      function pop() {
+        if (stackCurrentLength > 0) {
+          stackCurrentLength -= 1; // when function colled then the length will decrease by 1
+          stack.length = stackCurrentLength; // upadte stack length with current stack length;
+        } else {
+          alert("Stack is alredy empty"); // when stack is empty
+        }
+      }
+      push(1);
+      push(2);
+      push(3);
+      pop();
+      push(4);
+      push(5);
+      pop();
+      console.log(stack);
+    </script>
+  </body>
+</html>

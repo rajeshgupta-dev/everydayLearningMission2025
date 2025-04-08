@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input-fied">
+    <button id="add-task">Add Task</button>
+    <button id="clear-task">clear-task</button>
+    <ul id="taks"></ul>
+</body>
+</html>
+<script>
+    let input = document.getElementById("input-fied");
+    let addBtn = document.getElementById("add-task");
+    let clearAll = document.getElementById("clear-task");
+    let tasks = document.getElementById("taks");
+
+    addBtn.addEventListener("click",()=>{
+        let data = input.value;
+        let item = document.createElement("li");
+        item.textContent = data;
+        item.appendChild(tasks);
+
+    })
+</script>

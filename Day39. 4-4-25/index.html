@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Storaage lecture practice</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // localStorage.setItem(key : st)
+  localStorage.setItem("Name", "Rajesh"); // set data in local storage in obi form
+  console.log(localStorage.getItem("Name")); // Rajesh
+
+  console.log(localStorage.getItem("userName")); //  null
+
+  let person = { name: "Sam", age: 30 };
+  localStorage.setItem("person", JSON.stringify(person))
+  let retrievedData = localStorage.getItem("person");
+//   console.log(retrievedData); // undefined
+//   ⬇️
+//    let retData = localStorage.getItem("persone",JSON.parse(person));
+   console.log(JSON.parse(retrievedData)); // {name: 'Sam', age: 30}
+
+  console.table(localStorage); 
+// index           Value
+// user	'[object Object]'
+// Name	'Rajesh'
+// person	'{"name":"Sam","age":30}'
+// length	3
+
+  let user = { name: "Alice", age: 25 };
+  localStorage.setItem("user", user);
+  console.log(localStorage.getItem("user")); // [object Object]
+</script>

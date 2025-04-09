@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event listner</title>
+</head>
+<body>
+
+  <div id="parent" style="width: 200px; height: 200px; background-color: lightblue;">
+    <button id="child">Click Me</button>
+</div>
+
+<script>
+    // userCapture and  Bubbling phase  .   
+  const parentDiv = document.getElementById("parent");
+  const button = document.getElementById("child");
+
+  // Event listener on the parent element with useCapture = false (by default)
+  parentDiv.addEventListener("click", function() {
+    alert("Parent clicked during bubbling phase!");   // only this wiil , when parent clicked
+    event.stopPropagation();
+  });
+  // Event listener on the child element
+  button.addEventListener("click", function(event) {
+    alert("Button clicked!");   // 1st ,then 2nd parent   
+    
+  },false); 
+</script>
+</body>
+</html>

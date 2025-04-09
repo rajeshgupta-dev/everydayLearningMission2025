@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List with Local storage</title>
+  </head>
+  <body>
+    <input type="text" id="inputTask" placeholder="Enter Task" />
+    <button id="AddTask" onclick="addTasks()">Add Task</button>
+    <button id="deleteTask" onclick="clearTask()">Clear Task</button>
+
+    <ul id="listTask"></ul>
+    <script>
+      function addTasks() {
+        let toDoInput = document.getElementById("inputTask").value;
+        if (toDoInput && isNaN(toDoInput)) {
+          let tasks = JSON.parse(localStorage.getItem("tasks")) || []; // if Data present-fetch, otherwise create a array
+          tasks.push(toDoInput); // Push task in array
+          localStorage.setItem("tasks", JSON.stringify(tasks)); // store task in array string formate
+          //   console.log(tasks);
+          document.getElementById("inputTask").value = ""; // clear input field after enter
+          displayTask();
+        } else {
+          alert("Enter task");
+        }
+      }
+
+      // enter key press ,
+      document
+        .getElementById("inputTask")
+        .addEventListener("keydown", (event) => {
+          if (event.key == "Enter") {
+            addTasks();
+          }
+        });
+
+      // Dispaly task on UI ,function
+      function displayTask() {
+        let task = JSON.parse(localStorage.getItem("tasks")); // convert Array strings data in  array formate
+        console.log(task);
+        let taskList = document.getElementById("listTask");
+        taskList.innerHTML = ""; // clear UI before fetching again or adding new task
+        task.forEach((element) => {
+          // itrate on array to get all Data
+          // console.log(element)
+
+          let li = document.createElement("li");
+          li.innerHTML = element;
+          taskList.appendChild(li);
+        });
+      }
+      // remove task function
+      function clearTask() {
+        localStorage.removeItem("tasks");
+        displayTask();
+      }
+      displayTask(); // displaying data when page loaded
+    </script>
+  </body>
+</html>

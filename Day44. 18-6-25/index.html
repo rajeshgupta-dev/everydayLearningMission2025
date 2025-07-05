@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sequence Check</title>
+    <style>
+      .con {
+        width: 50px;
+        height: 50px;
+        border: 1px solid black;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        display: none;
+        display: flex;
+      }
+      .main {
+        display: flex;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="con" id="one">1</div>
+      <div class="con" id="two">2</div>
+      <div class="con" id="three">3</div>
+    </div>
+    <button onclick="clickOn()">Click</button>
+
+    <script>
+      const divs = [
+        document.getElementById("one"),
+        document.getElementById("two"),
+        document.getElementById("three"),
+      ];
+
+      let currentStep = 0;
+
+      function clickOn() {
+        if (currentStep < divs.length) {
+          divs[currentStep].style.display = "flex";
+
+          let userInput = prompt("Enter the sequence");
+
+          if (userInput.trim().toUpperCase() === "A-B-C-D") {
+            alert("Correct! Moving to next.");
+            currentStep++;
+            if (currentStep < divs.length) {
+              clickOn();
+            } else {
+              alert("All steps completed!");
+            }
+          } else {
+            alert("Wrong sequence. Try again from start.");
+            resetAll();
+          }
+        }
+      }
+
+      function resetAll() {
+        divs.forEach((div) => (div.style.display = "none"));
+        currentStep = 0;
+      }
+    </script>
+  </body>
+</html>

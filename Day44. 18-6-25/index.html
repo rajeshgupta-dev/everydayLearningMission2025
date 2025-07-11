@@ -31,7 +31,7 @@
     <button onclick="clickOn()">Click</button>
 
     <script>
-      const divs = [
+      const div = [
         document.getElementById("one"),
         document.getElementById("two"),
         document.getElementById("three"),
@@ -40,8 +40,8 @@
       let currentStep = 0;
 
       function clickOn() {
-        if (currentStep < divs.length) {
-          divs[currentStep].style.display = "flex";
+        if (currentStep < div.length) {
+          div[currentStep].style.display = "flex";
 
           let userInput = prompt("Enter the sequence");
 

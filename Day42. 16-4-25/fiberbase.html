@@ -1,91 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Firebase User Form</title>
-  <style>
-    body {
-      font-family: Arial;
-      padding: 20px;
-      background: #f4f4f4;
-    }
-    input, button {
-      padding: 10px;
-      margin: 10px 0;
-      display: block;
-      width: 300px;
-    }
-    .user-data {
-      margin-top: 20px;
-    }
-    .user {
-      background: #fff;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 4px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-  </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Firebase User Form</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+        background: #f4f4f4;
+      }
+      input,
+      button {
+        padding: 10px;
+        margin: 10px 0;
+        display: block;
+        width: 300px;
+      }
+      .user-data {
+        margin-top: 20px;
+      }
+      .user {
+        background: #fff;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Add User</h2>
+    <input type="text" id="username" placeholder="Enter name" />
+    <input type="number" id="age" placeholder="Enter age" />
+    <button onclick="addUser()">Submit</button>
 
-  <h2>Add User</h2>
-  <input type="text" id="username" placeholder="Enter name">
-  <input type="number" id="age" placeholder="Enter age">
-  <button onclick="addUser()">Submit</button>
+    <h2>Stored Users</h2>
+    <div class="user-data" id="userData"></div>
 
-  <h2>Stored Users</h2>
-  <div class="user-data" id="userData"></div>
+    <script>
+      const firebaseURL =
+        "https://moviesdatabase-3d460-default-rtdb.asia-southeast1.firebasedatabase.app/users.json";
 
-  <script>
-    const firebaseURL = 'https://moviesdatabase-3d460-default-rtdb.asia-southeast1.firebasedatabase.app/users.json';
+      function addUser() {
+        const name = document.getElementById("username").value.trim();
+        const age = document.getElementById("age").value.trim();
 
-function addUser() {
-  const name = document.getElementById('username').value.trim();
-  const age = document.getElementById('age').value.trim();
-
-  if (!name || !age) {
-    alert('Please enter both name and age.');
-    return;
-  }
-
-  const user = { name, age };
-
-  // POST to Firebase
-  fetch(firebaseURL, {
-    method: 'PUT',
-    body: JSON.stringify(user),
-    headers: {'Content-Type': 'application/json'}
-  }).then(() => {
-    document.getElementById('username').value = '';
-    document.getElementById('age').value = '';
-    fetchUsers(); // refresh user list
-  });
-}
-
-let count = 1
-function fetchUsers() {
-    fetch(firebaseURL)
-    .then(res => res.json())
-    .then(data => {
-        const userDataDiv = document.getElementById('userData');
-        userDataDiv.innerHTML = ''; // Clear previous list
-        
-        for (let id in data) {
-            const user = data[id];
-            const userDiv = document.createElement('div');
-            userDiv.className = 'user';
-            userDiv.innerText = `${count}. Name: ${user.name}, Age: ${user.age}`;
-            count++
-            userDataDiv.appendChild(userDiv);
+        if (!name || !age) {
+          alert("Please enter both name and age.");
+          return;
         }
-    });
-}
 
-// Fetch existing users on load
+        const user = { name, age };
 
-window.onload = fetchUsers;
+        fetch(firebaseURL, {
+          method: "POST",
+          body: JSON.stringify(user),
+          headers: { "Content-Type": "application/json" },
+        }).then(() => {
+          document.getElementById("username").value = "";
+          document.getElementById("age").value = "";
+          fetchUsers(); // refresh user list
+        });
+      }
 
-  </script>
-</body>
+      function fetchUsers() {
+        fetch(firebaseURL)
+          .then((res) => res.json())
+          .then((data) => {
+            const userDataDiv = document.getElementById("userData");
+            userDataDiv.innerHTML = ""; // Clear previous list
+            let count = 1; // Reset count each time
+
+            for (let id in data) {
+              const user = data[id];
+              const userDiv = document.createElement("div");
+              userDiv.className = "user";
+              userDiv.innerText = `${count}. Name: ${user.name}, Age: ${user.age}`;
+              count++;
+              userDataDiv.appendChild(userDiv);
+            }
+          });
+      }
+
+      // Fetch existing users on page load
+      window.onload = fetchUsers;
+    </script>
+  </body>
 </html>

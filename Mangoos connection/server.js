@@ -18,5 +18,9 @@ app.get("/", (req, res) => {
   res.send("HOme apge");
 })
 
+app.get("/about", (req, res) => {
+  res.json({ name: "Raj", email: "raj@gmail.com" });
+})
+
 
 app.listen(PORT, () => console.log("Sever is runing on port", PORT));

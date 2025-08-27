@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
   res.send("HOme apge");
 })
 
-app.get("/about", (req, res) => {
+app.get("/contact", (req, res) => {
   res.json({ name: "Raj", email: "raj@gmail.com" });
 })
 

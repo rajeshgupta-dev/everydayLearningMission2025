@@ -25,3 +25,4 @@ countBitsInBinary(5);   // Output: 0 1 1 2 1 2
 countBitsInBinary(8);   // Output: 0 1 1 2 1 2 2 3 1
 countBitsInBinary(0);   // Output: 0
 countBitsInBinary(10);  // Output: 0 1 1 2 1 2 2 3 1 2 2
+countBitsInBinary(20);  // output: 0 1 1 2 1 2 2 3 1 2 2 3 2 3 3 4 1 2 2 3 2

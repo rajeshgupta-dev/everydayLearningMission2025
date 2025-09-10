@@ -34,3 +34,5 @@ findLongestCommonSubsequenceLength("ABC", "DEF");       // Output: 0
 findLongestCommonSubsequenceLength("", "");             // Output: 0
 findLongestCommonSubsequenceLength("ABC", "");          // Output: 0
 findLongestCommonSubsequenceLength("A", "A");           // Output: 1
+findLongestCommonSubsequenceLength("ABCDEF", "ABCDEF");      // Output: 6
+findLongestCommonSubsequenceLength("ABCDEFG", "EFGABCD");    // Output: 4

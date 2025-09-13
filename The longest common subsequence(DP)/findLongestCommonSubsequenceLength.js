@@ -23,7 +23,6 @@ function findLongestCommonSubsequenceLength(str1, str2) {
         }
     }
 
-    // Step 3: Print the length of LCS (bottom-right cell)
     console.log(dp[m][n]);
 }
 

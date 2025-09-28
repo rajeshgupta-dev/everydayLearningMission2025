@@ -77,7 +77,6 @@ The problem can be efficiently solved using **regular expressions** by creating 
 ```js
 function isNumber(s) {
     s = s.trim();
-
     const regex = /^[+-]?((\d+\.\d*)|(\.\d+)|(\d+))([eE][+-]?\d+)?$/;
     return regex.test(s);
 }

@@ -2,7 +2,7 @@
 
 ## Problem Description
 
-**Link:** [LeetCode Problem 65: Valid Number](https://leetcode.com/problems/valid-number/)
+**Link:** [LeetCode Problem 65 : Valid Number](https://leetcode.com/problems/valid-number/)
 
 Given a string `s`, return whether `s` is a valid number.
 

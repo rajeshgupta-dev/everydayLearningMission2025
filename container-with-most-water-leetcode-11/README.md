@@ -84,7 +84,7 @@ We use **two pointers**, one at the start and one at the end of the array:
 
 1. Start with `left = 0` and `right = n - 1`.
 2. Calculate the area using the two lines at these pointers.
-3. Keep track of the **maximum area** found so far.
+3. Keep track of the  **maximum area** found so far.
 4. Move the pointer pointing to the **shorter line**:
    - If `height[left] < height[right]`, move `left` one step to the right.
    - Else, move `right` one step to the left.
@@ -138,7 +138,7 @@ function maxArea(height) {
 ## 📌 Summary
 
 * Use **two pointers** to check all possible containers efficiently.
-* Always move the pointer with the **shorter line**.
+* Always move the pointer with the  **shorter line**.
 * This gives the **maximum area** in just one pass through the array.
 
 ---

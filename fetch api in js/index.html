@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch data JS</title>
+  </head>
+  <body>
+    <h1>Fetch data</h1>
+
+    <script>
+      let data;
+      async function getData() {
+        try {
+          let res = await fetch("https://fakestoreapi.com/products");
+          data = await res.json();
+          // console.log(data);
+          filterData();
+        } catch (e) {
+          console.log(e);
+        }
+      }
+      getData();
+
+      // console.log(data);
+
+      function filterData() {
+        const lessThan = data.filter((item) => item.price <= 500);
+        console.log("more than", lessThan);
+
+        const moreThan = data.filter((item) => item.price >= 500);
+        console.log("more than", moreThan);
+
+        const category = data.filter(
+          (item) => item.category == "men's clothing"
+        );
+        console.log("catogery", category);
+
+        const searchItem = data.filter((item) => item.title.includes("Mens"));
+        console.log("search item", searchItem);
+      }
+    </script>
+  </body>
+</html>

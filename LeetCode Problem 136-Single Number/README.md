@@ -76,7 +76,7 @@ function singleNumber(nums) {
 function singleNumber(nums) {
 ```
 
-* Define a function `singleNumber` that takes an array of numbers.
+* Define a function `singleNumber`  that takes an array of numbers.
 
 ```js
     let res = 0;

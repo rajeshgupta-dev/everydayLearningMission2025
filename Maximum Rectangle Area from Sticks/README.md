@@ -1,8 +1,5 @@
 # Maximum Rectangle Area from Sticks
 
-This project contains a JavaScript function that calculates the **maximum area of a rectangle** that can be formed using given stick lengths. Each rectangle side must be made from two sticks of the same length.
-
----
 
 ## Problem Statement
 

@@ -13,7 +13,7 @@ const Counter = () => {
   }
   return (
     <>
-    <div id='container'><h1>{count}</h1>
+    <div id='container'><h2>Count : {count}</h2>
       <button onClick={increament} >INC</button>
       <button onClick={decreament} disabled = {count <= 0}>DEC</button>
     </div>

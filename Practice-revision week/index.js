@@ -2,6 +2,7 @@ const searchInput = document.getElementById("SearchInput");
 const searchBTN = document.getElementById("seachBTN");
 const resDiv = document.getElementById("result");
 const pagination = document.getElementById("pagination");
+let sortSelect = document.getElementById("selectSort")
 
 let allMeals = [];
 let currentPage = 1;
@@ -9,6 +10,10 @@ const itemsPerPage = 6;
 
 // 🔍 Search button click
 searchBTN.addEventListener("click", handleSearch);
+const debouncedLiveSearch = debounce(handleLiveSearch, 1000);
+
+searchInput.addEventListener("input", debouncedLiveSearch);
+
 
 // 🔍 Live search while typing
 searchInput.addEventListener("input", handleLiveSearch);
@@ -30,6 +35,12 @@ async function handleLiveSearch() {
   }
 }
 
+function handleSorting() {
+  applySorting();
+  showMeals();
+}
+
+
 async function fetchMeals(query) {
   try {
     const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
@@ -37,7 +48,7 @@ async function fetchMeals(query) {
 
     if (data.meals) {
       allMeals = data.meals;
-      currentPage = 1; 
+      currentPage = 1;
       showMeals();
     } else {
       allMeals = [];
@@ -118,4 +129,22 @@ function createPaginationButton(text, onClick) {
   btn.addEventListener("click", onClick);
   btn.style.margin = "0 5px";
   return btn;
+}
+
+function applySorting() {
+  const sortValue = sortSelect.value;
+  if (sortValue === "az") {
+    allMeals.sort((a, b) => a.strMeal.localCompare(b.strMeal));
+  } else if (sortValue === "za") {
+    allMeals.sort((a, b) => b.strMeal.localCompare(a.strMeal));
+  }
+}
+
+
+function debounce(fn, delay) {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn.apply(this, args), delay);
+  };
 }

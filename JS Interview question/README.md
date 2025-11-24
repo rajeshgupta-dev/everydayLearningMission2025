@@ -6,7 +6,7 @@ A beginner-friendly guide to important JavaScript topics. Each concept is explai
 
 ## 📌 1. Lexical Environment
 
-A **Lexical Environment** is where variables and  functions live when the code is running. It is created every time a function is invoked.
+A **Lexical Environment** is where variables and functions live when the code is running. It is created every time a function is invoked.
 
 **It includes:**
 - Local variables inside the function

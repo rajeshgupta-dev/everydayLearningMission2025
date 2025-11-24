@@ -1,4 +1,4 @@
-# 📘 JavaScript  Concepts Made Easy
+# 📘 JavaScript Concepts Made Easy
 
 A beginner-friendly guide to important JavaScript topics. Each concept is explained in simple language with real examples so you can understand and remember it easily.
 
